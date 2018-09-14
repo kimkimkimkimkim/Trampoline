@@ -8,17 +8,19 @@ public class drawPhysicsLine : MonoBehaviour
 	public GameObject linePrefab;
 	public float lineLength = 0.2f;
 	public float lineWidth = 0.1f;
+	public bool gamefinish = false;
 
 	private Vector3 touchPos;
 	private int count = 0;
 	private bool canDraw = false;
+	private bool isCreated = false;
 
 	void Start(){
 
 	}
 
 	void Update (){
-		drawLine ();
+		if(!gamefinish)drawLine ();
 	}
 
 	void drawLine(){
@@ -37,6 +39,7 @@ public class drawPhysicsLine : MonoBehaviour
 			endPos.z=0;
 
 			if((endPos-startPos).magnitude > lineLength){
+				
 				if(canDraw)Destroy (line.transform.Find ("Line" + count.ToString ()).gameObject);
 				GameObject obj = Instantiate(linePrefab, transform.position, transform.rotation) as GameObject;
 				obj.name = "Line" + count.ToString();
@@ -45,13 +48,21 @@ public class drawPhysicsLine : MonoBehaviour
 				obj.transform.localScale = new Vector3( (endPos-startPos).magnitude, lineWidth , lineWidth );
 				obj.transform.parent = line.transform;
 
+				isCreated = true;
 				canDraw = true;
 			}
 		}
 
-		if (Input.GetMouseButtonUp (0)) {
+		if (Input.GetMouseButtonUp (0) && isCreated) {
+			GameObject obj = line.transform.Find ("Line" + count.ToString ()).gameObject;
+			BoxCollider2D[] bCol = obj.GetComponents<BoxCollider2D> ();
+			for (int i = 0; i < bCol.Length; i++) {
+				bCol[i].enabled = true;
+			}
 			count++;
 			canDraw = false;
+			isCreated = false;
 		}
 	}
+
 }
