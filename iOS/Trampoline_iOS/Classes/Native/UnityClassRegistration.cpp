@@ -138,7 +138,7 @@ class VideoPlayer;
 class WindZone; 
 namespace UI { class CanvasRenderer; } template <> void RegisterClass<UI::CanvasRenderer>();
 class Collider; template <> void RegisterClass<Collider>();
-class BoxCollider; 
+class BoxCollider; template <> void RegisterClass<BoxCollider>();
 class CapsuleCollider; 
 class CharacterController; 
 class MeshCollider; template <> void RegisterClass<MeshCollider>();
@@ -275,7 +275,7 @@ void RegisterAllClasses()
 {
 void RegisterBuiltinTypes();
 RegisterBuiltinTypes();
-	//Total: 74 non stripped classes
+	//Total: 75 non stripped classes
 	//0. Behaviour
 	RegisterClass<Behaviour>();
 	//1. Unity::Component
@@ -408,21 +408,23 @@ RegisterBuiltinTypes();
 	RegisterClass<RenderSettings>();
 	//65. LevelGameManager
 	RegisterClass<LevelGameManager>();
-	//66. UI::Canvas
-	RegisterClass<UI::Canvas>();
-	//67. LightmapSettings
-	RegisterClass<LightmapSettings>();
-	//68. SpriteRenderer
-	RegisterClass<SpriteRenderer>();
-	//69. UI::CanvasRenderer
-	RegisterClass<UI::CanvasRenderer>();
-	//70. Collider
+	//66. BoxCollider
+	RegisterClass<BoxCollider>();
+	//67. Collider
 	RegisterClass<Collider>();
-	//71. MeshCollider
+	//68. UI::Canvas
+	RegisterClass<UI::Canvas>();
+	//69. LightmapSettings
+	RegisterClass<LightmapSettings>();
+	//70. SpriteRenderer
+	RegisterClass<SpriteRenderer>();
+	//71. UI::CanvasRenderer
+	RegisterClass<UI::CanvasRenderer>();
+	//72. MeshCollider
 	RegisterClass<MeshCollider>();
-	//72. PhysicsMaterial2D
+	//73. PhysicsMaterial2D
 	RegisterClass<PhysicsMaterial2D>();
-	//73. CircleCollider2D
+	//74. CircleCollider2D
 	RegisterClass<CircleCollider2D>();
 
 }

@@ -3158,6 +3158,8 @@ public:
 	int32_t ___count_8;
 	// System.Boolean drawPhysicsLine::canDraw
 	bool ___canDraw_9;
+	// System.Boolean drawPhysicsLine::isCreated
+	bool ___isCreated_10;
 
 public:
 	inline static int32_t get_offset_of_line_2() { return static_cast<int32_t>(offsetof(drawPhysicsLine_t3591171480, ___line_2)); }
@@ -3224,6 +3226,14 @@ public:
 	inline void set_canDraw_9(bool value)
 	{
 		___canDraw_9 = value;
+	}
+
+	inline static int32_t get_offset_of_isCreated_10() { return static_cast<int32_t>(offsetof(drawPhysicsLine_t3591171480, ___isCreated_10)); }
+	inline bool get_isCreated_10() const { return ___isCreated_10; }
+	inline bool* get_address_of_isCreated_10() { return &___isCreated_10; }
+	inline void set_isCreated_10(bool value)
+	{
+		___isCreated_10 = value;
 	}
 };
 
@@ -3687,7 +3697,7 @@ extern const int32_t g_FieldOffsetTable1837[3] =
 	BallManager_t2004465268::get_offset_of_isRising_4(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1838 = { sizeof (drawPhysicsLine_t3591171480), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1838[8] = 
+extern const int32_t g_FieldOffsetTable1838[9] = 
 {
 	drawPhysicsLine_t3591171480::get_offset_of_line_2(),
 	drawPhysicsLine_t3591171480::get_offset_of_linePrefab_3(),
@@ -3697,6 +3707,7 @@ extern const int32_t g_FieldOffsetTable1838[8] =
 	drawPhysicsLine_t3591171480::get_offset_of_touchPos_7(),
 	drawPhysicsLine_t3591171480::get_offset_of_count_8(),
 	drawPhysicsLine_t3591171480::get_offset_of_canDraw_9(),
+	drawPhysicsLine_t3591171480::get_offset_of_isCreated_10(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1839 = { sizeof (GameManager_t1536523654), -1, 0, 0 };
 extern const int32_t g_FieldOffsetTable1839[2] = 

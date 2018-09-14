@@ -137,7 +137,6 @@ extern String_t* _stringLiteral1201842140;
 extern const uint32_t CameraMove_Start_m2841102537_MetadataUsageId;
 extern RuntimeClass* Input_t1431474628_il2cpp_TypeInfo_var;
 extern const RuntimeMethod* Object_Instantiate_TisGameObject_t1113636619_m3006960551_RuntimeMethod_var;
-extern const RuntimeMethod* GameObject_GetComponent_TisBoxCollider2D_t3581341831_m3822577742_RuntimeMethod_var;
 extern String_t* _stringLiteral2792132920;
 extern const uint32_t drawPhysicsLine_drawLine_m3466033833_MetadataUsageId;
 extern const uint32_t GameManager_Start_m2734446095_MetadataUsageId;
@@ -1604,6 +1603,8 @@ public:
 	int32_t ___count_8;
 	// System.Boolean drawPhysicsLine::canDraw
 	bool ___canDraw_9;
+	// System.Boolean drawPhysicsLine::isCreated
+	bool ___isCreated_10;
 
 public:
 	inline static int32_t get_offset_of_line_2() { return static_cast<int32_t>(offsetof(drawPhysicsLine_t3591171480, ___line_2)); }
@@ -1670,6 +1671,14 @@ public:
 	inline void set_canDraw_9(bool value)
 	{
 		___canDraw_9 = value;
+	}
+
+	inline static int32_t get_offset_of_isCreated_10() { return static_cast<int32_t>(offsetof(drawPhysicsLine_t3591171480, ___isCreated_10)); }
+	inline bool get_isCreated_10() const { return ___isCreated_10; }
+	inline bool* get_address_of_isCreated_10() { return &___isCreated_10; }
+	inline void set_isCreated_10(bool value)
+	{
+		___isCreated_10 = value;
 	}
 };
 
@@ -2192,12 +2201,16 @@ extern "C"  Vector2_t2156229523  Rigidbody2D_get_velocity_m366589732 (Rigidbody2
 extern "C"  void Debug_Log_m4051431634 (RuntimeObject * __this /* static, unused */, RuntimeObject * p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void BallManager::ChangeColliderEnable(System.Boolean)
 extern "C"  void BallManager_ChangeColliderEnable_m456052711 (BallManager_t2004465268 * __this, bool ___b0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// UnityEngine.Transform UnityEngine.Transform::GetChild(System.Int32)
+extern "C"  Transform_t3600365921 * Transform_GetChild_m1092972975 (Transform_t3600365921 * __this, int32_t p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // !!0[] UnityEngine.GameObject::GetComponents<UnityEngine.BoxCollider2D>()
 #define GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648(__this, method) ((  BoxCollider2DU5BU5D_t2295017854* (*) (GameObject_t1113636619 *, const RuntimeMethod*))GameObject_GetComponents_TisRuntimeObject_m1405838976_gshared)(__this, method)
 // !!0[] UnityEngine.GameObject::GetComponents<UnityEngine.EdgeCollider2D>()
 #define GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918(__this, method) ((  EdgeCollider2DU5BU5D_t2235400874* (*) (GameObject_t1113636619 *, const RuntimeMethod*))GameObject_GetComponents_TisRuntimeObject_m1405838976_gshared)(__this, method)
 // System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
 extern "C"  void Behaviour_set_enabled_m20417929 (Behaviour_t1437897464 * __this, bool p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.Int32 UnityEngine.Transform::get_childCount()
+extern "C"  int32_t Transform_get_childCount_m3145433196 (Transform_t3600365921 * __this, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // UnityEngine.Vector3 UnityEngine.Transform::get_position()
 extern "C"  Vector3_t3722313464  Transform_get_position_m36019626 (Transform_t3600365921 * __this, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void drawPhysicsLine::drawLine()
@@ -2238,8 +2251,6 @@ extern "C"  void Transform_set_right_m1787339266 (Transform_t3600365921 * __this
 extern "C"  void Transform_set_localScale_m3053443106 (Transform_t3600365921 * __this, Vector3_t3722313464  p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Boolean UnityEngine.Input::GetMouseButtonUp(System.Int32)
 extern "C"  bool Input_GetMouseButtonUp_m2924350851 (RuntimeObject * __this /* static, unused */, int32_t p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
-// !!0 UnityEngine.GameObject::GetComponent<UnityEngine.BoxCollider2D>()
-#define GameObject_GetComponent_TisBoxCollider2D_t3581341831_m3822577742(__this, method) ((  BoxCollider2D_t3581341831 * (*) (GameObject_t1113636619 *, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m2049753423_gshared)(__this, method)
 // !!0 UnityEngine.GameObject::GetComponent<GameManager>()
 #define GameObject_GetComponent_TisGameManager_t1536523654_m2510894885(__this, method) ((  GameManager_t1536523654 * (*) (GameObject_t1113636619 *, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m2049753423_gshared)(__this, method)
 // System.Void GameManager::GameOver()
@@ -2800,50 +2811,89 @@ extern "C"  void BallManager_ChangeColliderEnable_m456052711 (BallManager_t20044
 		il2cpp_codegen_initialize_method (BallManager_ChangeColliderEnable_m456052711_MetadataUsageId);
 		s_Il2CppMethodInitialized = true;
 	}
-	BoxCollider2DU5BU5D_t2295017854* V_0 = NULL;
-	EdgeCollider2DU5BU5D_t2235400874* V_1 = NULL;
-	int32_t V_2 = 0;
+	int32_t V_0 = 0;
+	BoxCollider2DU5BU5D_t2295017854* V_1 = NULL;
+	EdgeCollider2DU5BU5D_t2235400874* V_2 = NULL;
+	int32_t V_3 = 0;
+	{
+		V_0 = 0;
+		goto IL_0067;
+	}
+
+IL_0007:
 	{
 		GameObject_t1113636619 * L_0 = __this->get_goal_2();
 		NullCheck(L_0);
-		BoxCollider2DU5BU5D_t2295017854* L_1 = GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648(L_0, /*hidden argument*/GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648_RuntimeMethod_var);
-		V_0 = L_1;
-		GameObject_t1113636619 * L_2 = __this->get_goal_2();
-		NullCheck(L_2);
-		EdgeCollider2DU5BU5D_t2235400874* L_3 = GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918(L_2, /*hidden argument*/GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918_RuntimeMethod_var);
-		V_1 = L_3;
-		V_2 = 0;
-		goto IL_0035;
-	}
-
-IL_001f:
-	{
-		BoxCollider2DU5BU5D_t2295017854* L_4 = V_0;
-		int32_t L_5 = V_2;
+		Transform_t3600365921 * L_1 = GameObject_get_transform_m1369836730(L_0, /*hidden argument*/NULL);
+		int32_t L_2 = V_0;
+		NullCheck(L_1);
+		Transform_t3600365921 * L_3 = Transform_GetChild_m1092972975(L_1, L_2, /*hidden argument*/NULL);
+		NullCheck(L_3);
+		GameObject_t1113636619 * L_4 = Component_get_gameObject_m442555142(L_3, /*hidden argument*/NULL);
 		NullCheck(L_4);
-		int32_t L_6 = L_5;
-		BoxCollider2D_t3581341831 * L_7 = (L_4)->GetAt(static_cast<il2cpp_array_size_t>(L_6));
-		bool L_8 = ___b0;
+		BoxCollider2DU5BU5D_t2295017854* L_5 = GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648(L_4, /*hidden argument*/GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648_RuntimeMethod_var);
+		V_1 = L_5;
+		GameObject_t1113636619 * L_6 = __this->get_goal_2();
+		NullCheck(L_6);
+		Transform_t3600365921 * L_7 = GameObject_get_transform_m1369836730(L_6, /*hidden argument*/NULL);
+		int32_t L_8 = V_0;
 		NullCheck(L_7);
-		Behaviour_set_enabled_m20417929(L_7, L_8, /*hidden argument*/NULL);
-		EdgeCollider2DU5BU5D_t2235400874* L_9 = V_1;
-		int32_t L_10 = V_2;
+		Transform_t3600365921 * L_9 = Transform_GetChild_m1092972975(L_7, L_8, /*hidden argument*/NULL);
 		NullCheck(L_9);
-		int32_t L_11 = L_10;
-		EdgeCollider2D_t2781859275 * L_12 = (L_9)->GetAt(static_cast<il2cpp_array_size_t>(L_11));
-		bool L_13 = ___b0;
-		NullCheck(L_12);
-		Behaviour_set_enabled_m20417929(L_12, L_13, /*hidden argument*/NULL);
-		int32_t L_14 = V_2;
-		V_2 = ((int32_t)il2cpp_codegen_add((int32_t)L_14, (int32_t)1));
+		GameObject_t1113636619 * L_10 = Component_get_gameObject_m442555142(L_9, /*hidden argument*/NULL);
+		NullCheck(L_10);
+		EdgeCollider2DU5BU5D_t2235400874* L_11 = GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918(L_10, /*hidden argument*/GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918_RuntimeMethod_var);
+		V_2 = L_11;
+		V_3 = 0;
+		goto IL_005c;
 	}
 
-IL_0035:
+IL_0046:
 	{
-		int32_t L_15 = V_2;
-		if ((((int32_t)L_15) < ((int32_t)1)))
+		BoxCollider2DU5BU5D_t2295017854* L_12 = V_1;
+		int32_t L_13 = V_3;
+		NullCheck(L_12);
+		int32_t L_14 = L_13;
+		BoxCollider2D_t3581341831 * L_15 = (L_12)->GetAt(static_cast<il2cpp_array_size_t>(L_14));
+		bool L_16 = ___b0;
+		NullCheck(L_15);
+		Behaviour_set_enabled_m20417929(L_15, L_16, /*hidden argument*/NULL);
+		EdgeCollider2DU5BU5D_t2235400874* L_17 = V_2;
+		int32_t L_18 = V_3;
+		NullCheck(L_17);
+		int32_t L_19 = L_18;
+		EdgeCollider2D_t2781859275 * L_20 = (L_17)->GetAt(static_cast<il2cpp_array_size_t>(L_19));
+		bool L_21 = ___b0;
+		NullCheck(L_20);
+		Behaviour_set_enabled_m20417929(L_20, L_21, /*hidden argument*/NULL);
+		int32_t L_22 = V_3;
+		V_3 = ((int32_t)il2cpp_codegen_add((int32_t)L_22, (int32_t)1));
+	}
+
+IL_005c:
+	{
+		int32_t L_23 = V_3;
+		if ((((int32_t)L_23) < ((int32_t)2)))
 		{
-			goto IL_001f;
+			goto IL_0046;
+		}
+	}
+	{
+		int32_t L_24 = V_0;
+		V_0 = ((int32_t)il2cpp_codegen_add((int32_t)L_24, (int32_t)1));
+	}
+
+IL_0067:
+	{
+		int32_t L_25 = V_0;
+		GameObject_t1113636619 * L_26 = __this->get_goal_2();
+		NullCheck(L_26);
+		Transform_t3600365921 * L_27 = GameObject_get_transform_m1369836730(L_26, /*hidden argument*/NULL);
+		NullCheck(L_27);
+		int32_t L_28 = Transform_get_childCount_m3145433196(L_27, /*hidden argument*/NULL);
+		if ((((int32_t)L_25) < ((int32_t)L_28)))
+		{
+			goto IL_0007;
 		}
 	}
 	{
@@ -3008,6 +3058,8 @@ extern "C"  void drawPhysicsLine_drawLine_m3466033833 (drawPhysicsLine_t35911714
 	Vector3_t3722313464  V_5;
 	memset(&V_5, 0, sizeof(V_5));
 	GameObject_t1113636619 * V_6 = NULL;
+	BoxCollider2DU5BU5D_t2295017854* V_7 = NULL;
+	int32_t V_8 = 0;
 	{
 		IL2CPP_RUNTIME_CLASS_INIT(Input_t1431474628_il2cpp_TypeInfo_var);
 		bool L_0 = Input_GetMouseButtonDown_m2081676745(NULL /*static, unused*/, 0, /*hidden argument*/NULL);
@@ -3033,7 +3085,7 @@ IL_0030:
 		bool L_5 = Input_GetMouseButton_m513753021(NULL /*static, unused*/, 0, /*hidden argument*/NULL);
 		if (!L_5)
 		{
-			goto IL_017b;
+			goto IL_0182;
 		}
 	}
 	{
@@ -3055,7 +3107,7 @@ IL_0030:
 		float L_14 = __this->get_lineLength_4();
 		if ((!(((float)L_13) > ((float)L_14))))
 		{
-			goto IL_017b;
+			goto IL_0182;
 		}
 	}
 	{
@@ -3143,51 +3195,78 @@ IL_00b8:
 		Transform_t3600365921 * L_57 = GameObject_get_transform_m1369836730(L_56, /*hidden argument*/NULL);
 		NullCheck(L_55);
 		Transform_set_parent_m786917804(L_55, L_57, /*hidden argument*/NULL);
+		__this->set_isCreated_10((bool)1);
 		__this->set_canDraw_9((bool)1);
 	}
 
-IL_017b:
+IL_0182:
 	{
 		IL2CPP_RUNTIME_CLASS_INIT(Input_t1431474628_il2cpp_TypeInfo_var);
 		bool L_58 = Input_GetMouseButtonUp_m2924350851(NULL /*static, unused*/, 0, /*hidden argument*/NULL);
 		if (!L_58)
 		{
-			goto IL_0208;
+			goto IL_0213;
 		}
 	}
 	{
-		GameObject_t1113636619 * L_59 = __this->get_line_2();
-		NullCheck(L_59);
-		Transform_t3600365921 * L_60 = GameObject_get_transform_m1369836730(L_59, /*hidden argument*/NULL);
-		int32_t* L_61 = __this->get_address_of_count_8();
-		String_t* L_62 = Int32_ToString_m141394615(L_61, /*hidden argument*/NULL);
-		IL2CPP_RUNTIME_CLASS_INIT(String_t_il2cpp_TypeInfo_var);
-		String_t* L_63 = String_Concat_m3937257545(NULL /*static, unused*/, _stringLiteral2792132920, L_62, /*hidden argument*/NULL);
+		bool L_59 = __this->get_isCreated_10();
+		if (!L_59)
+		{
+			goto IL_0213;
+		}
+	}
+	{
+		GameObject_t1113636619 * L_60 = __this->get_line_2();
 		NullCheck(L_60);
-		Transform_t3600365921 * L_64 = Transform_Find_m1729760951(L_60, L_63, /*hidden argument*/NULL);
-		NullCheck(L_64);
-		GameObject_t1113636619 * L_65 = Component_get_gameObject_m442555142(L_64, /*hidden argument*/NULL);
-		V_6 = L_65;
-		GameObject_t1113636619 * L_66 = __this->get_line_2();
-		NullCheck(L_66);
-		Transform_t3600365921 * L_67 = GameObject_get_transform_m1369836730(L_66, /*hidden argument*/NULL);
-		int32_t* L_68 = __this->get_address_of_count_8();
-		String_t* L_69 = Int32_ToString_m141394615(L_68, /*hidden argument*/NULL);
-		String_t* L_70 = String_Concat_m3937257545(NULL /*static, unused*/, _stringLiteral2792132920, L_69, /*hidden argument*/NULL);
+		Transform_t3600365921 * L_61 = GameObject_get_transform_m1369836730(L_60, /*hidden argument*/NULL);
+		int32_t* L_62 = __this->get_address_of_count_8();
+		String_t* L_63 = Int32_ToString_m141394615(L_62, /*hidden argument*/NULL);
+		IL2CPP_RUNTIME_CLASS_INIT(String_t_il2cpp_TypeInfo_var);
+		String_t* L_64 = String_Concat_m3937257545(NULL /*static, unused*/, _stringLiteral2792132920, L_63, /*hidden argument*/NULL);
+		NullCheck(L_61);
+		Transform_t3600365921 * L_65 = Transform_Find_m1729760951(L_61, L_64, /*hidden argument*/NULL);
+		NullCheck(L_65);
+		GameObject_t1113636619 * L_66 = Component_get_gameObject_m442555142(L_65, /*hidden argument*/NULL);
+		V_6 = L_66;
+		GameObject_t1113636619 * L_67 = V_6;
 		NullCheck(L_67);
-		Transform_t3600365921 * L_71 = Transform_Find_m1729760951(L_67, L_70, /*hidden argument*/NULL);
-		NullCheck(L_71);
-		GameObject_t1113636619 * L_72 = Component_get_gameObject_m442555142(L_71, /*hidden argument*/NULL);
-		NullCheck(L_72);
-		BoxCollider2D_t3581341831 * L_73 = GameObject_GetComponent_TisBoxCollider2D_t3581341831_m3822577742(L_72, /*hidden argument*/GameObject_GetComponent_TisBoxCollider2D_t3581341831_m3822577742_RuntimeMethod_var);
-		NullCheck(L_73);
-		Behaviour_set_enabled_m20417929(L_73, (bool)1, /*hidden argument*/NULL);
-		int32_t L_74 = __this->get_count_8();
-		__this->set_count_8(((int32_t)il2cpp_codegen_add((int32_t)L_74, (int32_t)1)));
-		__this->set_canDraw_9((bool)0);
+		BoxCollider2DU5BU5D_t2295017854* L_68 = GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648(L_67, /*hidden argument*/GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648_RuntimeMethod_var);
+		V_7 = L_68;
+		V_8 = 0;
+		goto IL_01ec;
 	}
 
-IL_0208:
+IL_01db:
+	{
+		BoxCollider2DU5BU5D_t2295017854* L_69 = V_7;
+		int32_t L_70 = V_8;
+		NullCheck(L_69);
+		int32_t L_71 = L_70;
+		BoxCollider2D_t3581341831 * L_72 = (L_69)->GetAt(static_cast<il2cpp_array_size_t>(L_71));
+		NullCheck(L_72);
+		Behaviour_set_enabled_m20417929(L_72, (bool)1, /*hidden argument*/NULL);
+		int32_t L_73 = V_8;
+		V_8 = ((int32_t)il2cpp_codegen_add((int32_t)L_73, (int32_t)1));
+	}
+
+IL_01ec:
+	{
+		int32_t L_74 = V_8;
+		BoxCollider2DU5BU5D_t2295017854* L_75 = V_7;
+		NullCheck(L_75);
+		if ((((int32_t)L_74) < ((int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_75)->max_length)))))))
+		{
+			goto IL_01db;
+		}
+	}
+	{
+		int32_t L_76 = __this->get_count_8();
+		__this->set_count_8(((int32_t)il2cpp_codegen_add((int32_t)L_76, (int32_t)1)));
+		__this->set_canDraw_9((bool)0);
+		__this->set_isCreated_10((bool)0);
+	}
+
+IL_0213:
 	{
 		return;
 	}

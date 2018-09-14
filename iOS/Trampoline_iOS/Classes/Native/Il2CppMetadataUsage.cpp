@@ -3507,7 +3507,6 @@ const RuntimeMethod* Component_GetComponent_TisRigidbody2D_t939494601_m153161343
 const RuntimeMethod* GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648_RuntimeMethod_var;
 const RuntimeMethod* GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918_RuntimeMethod_var;
 const RuntimeMethod* Object_Instantiate_TisGameObject_t1113636619_m3006960551_RuntimeMethod_var;
-const RuntimeMethod* GameObject_GetComponent_TisBoxCollider2D_t3581341831_m3822577742_RuntimeMethod_var;
 const RuntimeMethod* GameObject_GetComponent_TisGameManager_t1536523654_m2510894885_RuntimeMethod_var;
 const RuntimeMethod* Array_Exists_TisRuntimeObject_m3896745628_RuntimeMethod_var;
 const RuntimeMethod* Array_InternalArray__ICollection_Contains_TisTableRange_t3332867892_m220823873_RuntimeMethod_var;
@@ -7805,7 +7804,7 @@ String_t* _stringLiteral1864861238;
 String_t* _stringLiteral3926843441;
 String_t* _stringLiteral1132744560;
 String_t* _stringLiteral46997234;
-extern void** const g_MetadataUsages[7787] = 
+extern void** const g_MetadataUsages[7786] = 
 {
 	(void**)(&Contraction_t1589275354_0_0_0_var),
 	(void**)(&Level2Map_t3640798870_0_0_0_var),
@@ -11296,7 +11295,6 @@ extern void** const g_MetadataUsages[7787] =
 	(void**)(&GameObject_GetComponents_TisBoxCollider2D_t3581341831_m1622745648_RuntimeMethod_var),
 	(void**)(&GameObject_GetComponents_TisEdgeCollider2D_t2781859275_m1859021918_RuntimeMethod_var),
 	(void**)(&Object_Instantiate_TisGameObject_t1113636619_m3006960551_RuntimeMethod_var),
-	(void**)(&GameObject_GetComponent_TisBoxCollider2D_t3581341831_m3822577742_RuntimeMethod_var),
 	(void**)(&GameObject_GetComponent_TisGameManager_t1536523654_m2510894885_RuntimeMethod_var),
 	(void**)(&Array_Exists_TisRuntimeObject_m3896745628_RuntimeMethod_var),
 	(void**)(&Array_InternalArray__ICollection_Contains_TisTableRange_t3332867892_m220823873_RuntimeMethod_var),
