@@ -12,9 +12,9 @@ public class MoveGoal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log (this.transform.localPosition);
+		this.transform.parent.localEulerAngles = new Vector3(0,0,Random.Range(-15.0f,15.0f));
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		degree += Time.deltaTime;

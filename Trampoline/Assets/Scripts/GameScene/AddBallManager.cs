@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallManager : MonoBehaviour {
+public class AddBallManager : MonoBehaviour {
 
-	public GameObject goalField;
-
+	private GameObject goalField;
 	private GameObject camera;
 	private float vel; //ballの速度
 	private float boundPower = 9f;
@@ -17,6 +16,7 @@ public class BallManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		goalField = GameObject.Find("BasketGoal");
 		camera = GameObject.Find ("Main Camera");
 	}
 
@@ -24,6 +24,7 @@ public class BallManager : MonoBehaviour {
 	void Update () {
 		JudgeUpDown (); //上昇してるか下降してるか判定
 	}
+
 
 	void OnCollisionEnter2D(Collision2D col){
 
@@ -43,20 +44,6 @@ public class BallManager : MonoBehaviour {
 			if(isIn)Point (col);
 		}
 
-		if(col.gameObject.tag == "SpeedUp"){
-			Destroy(col.gameObject);
-			this.GetComponent<Rigidbody2D>().gravityScale = 1.2f;
-		}
-
-		if(col.gameObject.tag == "SpeedDown"){
-			Destroy(col.gameObject);
-			this.GetComponent<Rigidbody2D>().gravityScale = 0.4f;
-		}
-
-		if(col.gameObject.tag == "Double"){
-			Destroy(col.gameObject);
-		}
-
 	}
 
 	void Point(Collider2D col){
@@ -69,11 +56,8 @@ public class BallManager : MonoBehaviour {
 
 		camera.GetComponent<GameManager> ().UpdateScore (1);
 		camera.GetComponent<GameManager> ().CreateGoal ();
-	}
 
-	void GameClear(){
-		GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
-
+		Destroy(this.gameObject);
 	}
 
 	void JudgeUpDown(){
@@ -108,6 +92,11 @@ public class BallManager : MonoBehaviour {
 				eCol [i].enabled = b;
 			}
 		}
+	}
+
+	void GameClear(){
+		GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
+
 	}
 
 

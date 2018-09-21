@@ -9,6 +9,10 @@ TagManager:
   - Spike
   - Goal
   - Out
+  - MoveGoal
+  - SpeedDown
+  - SpeedUp
+  - Double
   layers:
   - Default
   - TransparentFX
